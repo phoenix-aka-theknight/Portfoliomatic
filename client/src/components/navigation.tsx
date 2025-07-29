@@ -3,14 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTheme } from "@/components/theme-provider";
 import { Code, Moon, Sun, Menu, X } from "lucide-react";
+import { Link, useLocation } from "wouter";
 
 const navItems = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#contact", label: "Contact" },
+  { href: "#home", label: "Home", isSection: true },
+  { href: "#about", label: "About", isSection: true },
+  { href: "#services", label: "Services", isSection: true },
+  { href: "#portfolio", label: "Portfolio", isSection: true },
+  { href: "/pricing", label: "Pricing", isSection: false },
+  { href: "#contact", label: "Contact", isSection: true },
 ];
 
 export function Navigation() {
@@ -18,6 +19,7 @@ export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,14 +42,19 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      const offsetTop = (element as HTMLElement).offsetTop - 80;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      });
+  const handleNavigation = (item: typeof navItems[0]) => {
+    if (item.isSection) {
+      const element = document.querySelector(item.href);
+      if (element) {
+        const offsetTop = (element as HTMLElement).offsetTop - 80;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth",
+        });
+      }
+    } else {
+      // For non-section links like /pricing, use Link navigation
+      window.location.href = item.href;
     }
     setIsMobileMenuOpen(false);
   };
@@ -69,17 +76,27 @@ export function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className={`transition-colors duration-200 ${
-                  activeSection === item.href.slice(1)
-                    ? "text-primary"
-                    : "hover:text-primary"
-                }`}
-              >
-                {item.label}
-              </button>
+              item.isSection ? (
+                <button
+                  key={item.href}
+                  onClick={() => handleNavigation(item)}
+                  className={`transition-colors duration-200 ${
+                    activeSection === item.href.slice(1)
+                      ? "text-primary"
+                      : "hover:text-primary"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link key={item.href} href={item.href}>
+                  <button className={`transition-colors duration-200 ${
+                    location === item.href ? "text-primary" : "hover:text-primary"
+                  }`}>
+                    {item.label}
+                  </button>
+                </Link>
+              )
             ))}
             
             <Button
@@ -112,17 +129,27 @@ export function Navigation() {
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <div className="flex flex-col space-y-4 mt-8">
                   {navItems.map((item) => (
-                    <button
-                      key={item.href}
-                      onClick={() => scrollToSection(item.href)}
-                      className={`text-left p-2 rounded-md transition-colors duration-200 ${
-                        activeSection === item.href.slice(1)
-                          ? "text-primary bg-primary/10"
-                          : "hover:bg-accent"
-                      }`}
-                    >
-                      {item.label}
-                    </button>
+                    item.isSection ? (
+                      <button
+                        key={item.href}
+                        onClick={() => handleNavigation(item)}
+                        className={`text-left p-2 rounded-md transition-colors duration-200 ${
+                          activeSection === item.href.slice(1)
+                            ? "text-primary bg-primary/10"
+                            : "hover:bg-accent"
+                        }`}
+                      >
+                        {item.label}
+                      </button>
+                    ) : (
+                      <Link key={item.href} href={item.href}>
+                        <button className={`text-left p-2 rounded-md transition-colors duration-200 w-full ${
+                          location === item.href ? "text-primary bg-primary/10" : "hover:bg-accent"
+                        }`}>
+                          {item.label}
+                        </button>
+                      </Link>
+                    )
                   ))}
                 </div>
               </SheetContent>

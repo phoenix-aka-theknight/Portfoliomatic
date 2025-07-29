@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 
 const plans = [
   {
@@ -127,19 +128,20 @@ export function PricingSection() {
                     ))}
                   </ul>
                   
-                  <Button
-                    onClick={scrollToContact}
-                    variant={plan.popular ? "secondary" : plan.buttonVariant}
-                    className={`w-full ${
-                      plan.popular 
-                        ? "bg-white text-primary hover:bg-gray-100" 
-                        : plan.buttonVariant === "default"
-                        ? "bg-gradient-to-r from-primary to-purple-600 hover:shadow-lg"
-                        : ""
-                    }`}
-                  >
-                    {plan.buttonText}
-                  </Button>
+                  <Link href="/pricing">
+                    <Button
+                      variant={plan.popular ? "secondary" : plan.buttonVariant}
+                      className={`w-full ${
+                        plan.popular 
+                          ? "bg-white text-primary hover:bg-gray-100" 
+                          : plan.buttonVariant === "default"
+                          ? "bg-gradient-to-r from-primary to-purple-600 hover:shadow-lg"
+                          : ""
+                      }`}
+                    >
+                      {plan.buttonText}
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </motion.div>

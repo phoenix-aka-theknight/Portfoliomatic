@@ -8,6 +8,23 @@ This is a professional portfolio website for Goblin Infotech, a web development 
 
 Preferred communication style: Simple, everyday language.
 
+## Recent Changes (July 29, 2025)
+
+✓ Updated founder information:
+  - Md Faadil Shaikh: Co-Founder & Lead Developer (Data Science, Advanced Python, MERN stack, 3rd year BE AIML student)
+  - Manjunath Giraddi: Co-Founder & Frontend Specialist (Frontend development, DBMS MySQL, Authentication Designs)
+
+✓ Improved hero section with smoother banner transition (full-height with better gradient)
+
+✓ Enhanced technical expertise section with actual programming language icons instead of solid color blocks
+
+✓ Created dedicated pricing page (/pricing) with detailed pricing tiers:
+  - Basic Package: ₹10,000-₹15,000 (templates)
+  - Premium tiers: ₹25,000-₹1,00,000+ (custom solutions based on tech stack and integrations)
+  - Add-on services section
+
+✓ Updated navigation to support both section scrolling and page routing
+
 ## System Architecture
 
 ### Frontend Architecture
