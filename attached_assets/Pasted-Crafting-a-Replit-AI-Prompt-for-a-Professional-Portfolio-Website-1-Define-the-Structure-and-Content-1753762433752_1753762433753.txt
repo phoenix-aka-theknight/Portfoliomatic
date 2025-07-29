@@ -1,0 +1,38 @@
+Crafting a Replit AI Prompt for a Professional Portfolio Website
+1. Define the Structure and Content: A strong prompt must clearly outline the site’s pages and content. For example, Replit’s documentation shows a good prompt specifying required sections: “Create a simple portfolio website. It needs sections for Home, About Me, and a Contact Form. Use a clean, modern design theme…”
+docs.replit.com
+. Similarly, our prompt should mention pages like Home, About, Services, Portfolio, and Contact, and describe key content (company name, location, services, founders, skills, projects, testimonial). Be specific about using React and making each link or button functional. This clarity and context guides the AI to build the site as intended
+docs.replit.com
+orkes.io
+.
+List the required pages (e.g. Home, About, Services, Projects, Contact) and describe what goes in each (founders, services offered, past projects, testimonial, contact form).
+Mention the startup name (Goblin Infotech), location (Vidyanagar, Hubli), founders’ info, skillset, and sample projects in the prompt so the AI includes them.
+Instruct the AI to use ReactJS, multi-page layout, and ensure all buttons/links work.
+Emphasize professional polish: instruct use of modern UI elements (hamburger menu, animation on hover, smooth transitions, etc.) and a polished design theme
+docs.replit.com
+.
+2. Emphasize Responsive, Modern Design: The prompt should stress a fully responsive, mobile-first design with dark/light mode support. Industry best practices note that “with more users accessing platforms through mobile… responsive and adaptive design isn’t optional — it’s essential”
+medium.com
+. Also highlight modern UI/UX features: micro-interactions and animations to enhance engagement
+medium.com
+. For instance, ask the AI for smooth fade-in effects, animated navigation, or icon hover effects. Mention specific design details like a hamburger icon on mobile (common for saving space
+justinmind.com
+) and a kebab (overflow) menu where appropriate. We can cite industry advice: “Tiny animations or feedback elements… enrich user experience, making it more engaging”
+medium.com
+, and “Give users control with options like dark/light modes”
+medium.com
+. Modern web layout with responsive design and clean UI elements. The prompt should instruct the AI to create a multi-page website that looks sleek in both light and dark themes and adapts to any screen size. Include instructions for polished animations (e.g. images fading in on load, animated hover states, smooth page transitions) and note that on smaller screens navigation should collapse into a hamburger menu
+justinmind.com
+. This ensures the site feels up-to-date and user-friendly. 3. Include Branding, Messaging, and Content Details: The AI prompt must incorporate the specific branding elements and content provided. For example, explicitly mention “Startup name: Goblin Infotech (based in Vidyanagar, Hubli, Karnataka)”, list services (custom websites, PWA apps, UI/UX design, hosting/DB services), founders’ names/backgrounds, skillset (HTML, CSS, JS, React, Node, etc.), and projects (fee receipt app, attendance app). Also include the testimonial by N. M. Goudar. A powerful addition is a line like “This portfolio site was built by Goblin Infotech to showcase our own work – it’s exactly how we will build for our customers.” This kind of instruction tells the AI to highlight that message in content or a “built by us” section. Use positive, clear instructions (avoid negatives) and iterative refinement if needed
+docs.replit.com
+docs.replit.com
+.
+Specify that the website should reflect Goblin Infotech’s brand (colors, logo placeholder, etc.).
+Instruct to feature each founder by name and role, and mention the skillset in an About or Team section.
+For the testimonial, instruct placing a quote or acknowledgment from N. M. Goudar.
+Use a friendly but professional tone in copy.
+4. Define Pricing Tiers: Outline the three pricing tiers in the prompt so the AI creates a Pricing or Plans page. For example: Basic (pre-made templates starting at ₹10,000), Premium (custom designs, long-term/dedicated support, AI features), and Enterprise (all premium features plus bulk options). Tiered pricing is a common model (different service levels at different price points
+shopify.com
+), so the AI should present these as distinct plans. It’s helpful to describe key features per tier in the prompt. Optionally, mention the currency (₹) to localize pricing.
+Ask for a visually clear pricing section/table comparing the tiers and their benefits.
+Emphasize that Basic uses pre-made templates (entry-level), while Premium and Enterprise include custom work and premium support.
