@@ -67,10 +67,10 @@ export function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center">
-              <Code className="text-white text-lg" />
+            <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center">
+              <Code className="text-white text-sm md:text-lg" />
             </div>
-            <span className="text-xl font-bold gradient-text">Goblin Infotech</span>
+            <span className="text-lg md:text-xl font-bold gradient-text">Goblin Infotech</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -110,30 +110,30 @@ export function Navigation() {
           </div>
 
           {/* Mobile Menu */}
-          <div className="md:hidden flex items-center space-x-4">
+          <div className="md:hidden flex items-center space-x-2">
             <Button
               variant="ghost"
-              size="icon"
+              size="sm"
               onClick={toggleTheme}
-              className="rounded-lg"
+              className="rounded-lg p-2"
             >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
             
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="rounded-lg">
-                  <Menu className="h-5 w-5" />
+                <Button variant="ghost" size="sm" className="rounded-lg p-2">
+                  <Menu className="h-4 w-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <div className="flex flex-col space-y-4 mt-8">
+              <SheetContent side="right" className="w-[280px]">
+                <div className="flex flex-col space-y-2 mt-6">
                   {navItems.map((item) => (
                     item.isSection ? (
                       <button
                         key={item.href}
                         onClick={() => handleNavigation(item)}
-                        className={`text-left p-2 rounded-md transition-colors duration-200 ${
+                        className={`text-left px-3 py-2 rounded-md transition-colors duration-200 text-sm ${
                           activeSection === item.href.slice(1)
                             ? "text-primary bg-primary/10"
                             : "hover:bg-accent"
@@ -143,7 +143,7 @@ export function Navigation() {
                       </button>
                     ) : (
                       <Link key={item.href} href={item.href}>
-                        <button className={`text-left p-2 rounded-md transition-colors duration-200 w-full ${
+                        <button className={`text-left px-3 py-2 rounded-md transition-colors duration-200 w-full text-sm ${
                           location === item.href ? "text-primary bg-primary/10" : "hover:bg-accent"
                         }`}>
                           {item.label}
