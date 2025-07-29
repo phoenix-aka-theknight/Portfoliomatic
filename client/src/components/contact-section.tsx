@@ -9,10 +9,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { MapPin, Mail, Phone, Send, Linkedin, Github, Twitter, Instagram } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+// import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
-import { apiRequest } from "@/lib/queryClient";
+// import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
@@ -45,7 +45,6 @@ const socialLinks = [
 
 export function ContactSection() {
   const { toast } = useToast();
-  const queryClient = useQueryClient();
 
   const form = useForm<InsertContact>({
     resolver: zodResolver(insertContactSchema),
@@ -58,30 +57,27 @@ export function ContactSection() {
     },
   });
 
-  const contactMutation = useMutation({
-    mutationFn: async (data: InsertContact) => {
-      const response = await apiRequest("POST", "/api/contact", data);
-      return response.json();
-    },
-    onSuccess: () => {
+  const onSubmit = async (data: InsertContact) => {
+    try {
+      // For static deployment, create mailto link
+      const subject = `Contact from ${data.firstName} ${data.lastName} - ${data.subject}`;
+      const body = `Name: ${data.firstName} ${data.lastName}\nEmail: ${data.email}\nSubject: ${data.subject}\n\nMessage:\n${data.message}`;
+      const mailtoLink = `mailto:info@goblininfotech.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      window.open(mailtoLink, '_blank');
+      
       toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. We'll get back to you soon.",
+        title: "Message prepared!",
+        description: "Your email client will open. Send the email to contact us.",
       });
       form.reset();
-      queryClient.invalidateQueries({ queryKey: ["/api/contacts"] });
-    },
-    onError: (error) => {
+    } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: "Failed to prepare message. Please try again.",
         variant: "destructive",
       });
-    },
-  });
-
-  const onSubmit = (data: InsertContact) => {
-    contactMutation.mutate(data);
+    }
   };
 
   return (
@@ -203,10 +199,9 @@ export function ContactSection() {
                     <Button 
                       type="submit" 
                       className="w-full bg-gradient-to-r from-primary to-purple-600 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-                      disabled={contactMutation.isPending}
                     >
                       <Send className="w-4 h-4 mr-2" />
-                      {contactMutation.isPending ? "Sending..." : "Send Message"}
+                      Send Message
                     </Button>
                   </form>
                 </Form>
